@@ -30,22 +30,26 @@ import java.util.Locale
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormBiodata(modifier: Modifier = Modifier) {
-
     var textNamaDepan by remember { mutableStateOf("") }
     var textNamaBelakang by remember { mutableStateOf("") }
     var textEmail by remember { mutableStateOf("") }
     var textTanggalLahir by remember { mutableStateOf("") }
     var textPengalaman by remember { mutableStateOf("") }
-
-    var expandedPengalaman by remember { mutableStateOf(false) }
-    val opsiPengalaman = listOf("0-1 tahun", "1-3 tahun", "3-5 tahun")
-
-    var showDatePicker by remember { mutableStateOf(false) }
-    val datePickerState = rememberDatePickerState()
-
     var isAndroidChecked by remember { mutableStateOf(false) }
     var isUiUxChecked by remember { mutableStateOf(false) }
     var isWebChecked by remember { mutableStateOf(false) }
+
+    var expandedPengalaman by remember { mutableStateOf(false) }
+    val opsiPengalaman = listOf("0-1 tahun", "1-3 tahun", "3-5 tahun")
+    var showDatePicker by remember { mutableStateOf(false) }
+    val datePickerState = rememberDatePickerState()
+
+    var namaDepan by remember { mutableStateOf("") }
+    var namaBelakang by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+    var tanggalLahir by remember { mutableStateOf("") }
+    var pengalaman by remember { mutableStateOf("") }
+    var skills by remember { mutableStateOf("") }
     var isProceedClicked by remember { mutableStateOf(false) }
 
     Box(
@@ -64,12 +68,12 @@ fun FormBiodata(modifier: Modifier = Modifier) {
         )
 
         IconButton(
-            onClick = { },
             modifier = Modifier
                 .align(Alignment.TopStart)
                 .padding(start = 20.dp, top = 36.dp)
                 .background(Color.White, shape = CircleShape)
-                .size(dimensionResource(id = R.dimen.height_menu_button))
+                .size(dimensionResource(id = R.dimen.height_menu_button)),
+            onClick = { }
         ) {
             Icon(
                 imageVector = Icons.Default.Menu,
@@ -122,46 +126,53 @@ fun FormBiodata(modifier: Modifier = Modifier) {
                     Row(modifier = Modifier.fillMaxWidth()) {
                         OutlinedTextField(
                             value = textNamaDepan,
-                            onValueChange = { textNamaDepan = it },
-                            label = { Text(stringResource(id = R.string.first_name), fontSize = dimensionResource(id = R.dimen.font_label).value.sp) },
+                            singleLine = true,
                             shape = RoundedCornerShape(dimensionResource(id = R.dimen.radius_textfield)),
                             modifier = Modifier.weight(1f).padding(end = 6.dp),
-                            singleLine = true
+                            label = { Text(stringResource(id = R.string.first_name), fontSize = dimensionResource(id = R.dimen.font_label).value.sp) },
+                            onValueChange = {
+                                textNamaDepan = it
+                            }
                         )
                         OutlinedTextField(
                             value = textNamaBelakang,
-                            onValueChange = { textNamaBelakang = it },
-                            label = { Text(stringResource(id = R.string.last_name), fontSize = dimensionResource(id = R.dimen.font_label).value.sp) },
+                            singleLine = true,
                             shape = RoundedCornerShape(dimensionResource(id = R.dimen.radius_textfield)),
                             modifier = Modifier.weight(1f).padding(start = 6.dp),
-                            singleLine = true
+                            label = { Text(stringResource(id = R.string.last_name), fontSize = dimensionResource(id = R.dimen.font_label).value.sp) },
+                            onValueChange = {
+                                textNamaBelakang = it
+                            }
                         )
                     }
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_small)))
 
                     OutlinedTextField(
                         value = textEmail,
-                        onValueChange = { textEmail = it },
-                        label =  { Text(stringResource(id = R.string.email), fontSize = dimensionResource(id = R.dimen.font_label).value.sp) },
+                        singleLine = true,
                         shape = RoundedCornerShape(dimensionResource(id = R.dimen.radius_textfield)),
                         modifier = Modifier.fillMaxWidth(),
-                        singleLine = true
+                        label = { Text(stringResource(id = R.string.email), fontSize = dimensionResource(id = R.dimen.font_label).value.sp) },
+                        onValueChange = {
+                            textEmail = it
+                        }
                     )
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_small)))
 
                     Row(modifier = Modifier.fillMaxWidth()) {
                         OutlinedTextField(
                             value = textTanggalLahir,
-                            onValueChange = { },
+                            singleLine = true,
                             readOnly = true,
-                            label = { Text(stringResource(id = R.string.date_birth), fontSize = dimensionResource(id = R.dimen.font_label).value.sp) },
                             shape = RoundedCornerShape(dimensionResource(id = R.dimen.radius_textfield)),
                             modifier = Modifier.weight(1f).padding(end = 6.dp),
+                            label = { Text(stringResource(id = R.string.date_birth), fontSize = dimensionResource(id = R.dimen.font_label).value.sp) },
                             trailingIcon = {
                                 IconButton(onClick = { showDatePicker = true }) {
                                     Icon(Icons.Default.DateRange, contentDescription = "Pilih Tgl")
                                 }
-                            }
+                            },
+                            onValueChange = { }
                         )
 
                         ExposedDropdownMenuBox(
@@ -171,12 +182,13 @@ fun FormBiodata(modifier: Modifier = Modifier) {
                         ) {
                             OutlinedTextField(
                                 value = textPengalaman,
-                                onValueChange = { },
+                                singleLine = true,
                                 readOnly = true,
-                                label = { Text(stringResource(id = R.string.experience), fontSize = dimensionResource(id = R.dimen.font_label).value.sp) },
                                 shape = RoundedCornerShape(dimensionResource(id = R.dimen.radius_textfield)),
+                                modifier = Modifier.menuAnchor(),
+                                label = { Text(stringResource(id = R.string.experience), fontSize = dimensionResource(id = R.dimen.font_label).value.sp) },
                                 trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expandedPengalaman) },
-                                modifier = Modifier.menuAnchor()
+                                onValueChange = { }
                             )
                             ExposedDropdownMenu(
                                 expanded = expandedPengalaman,
@@ -185,7 +197,10 @@ fun FormBiodata(modifier: Modifier = Modifier) {
                                 opsiPengalaman.forEach { opsi ->
                                     DropdownMenuItem(
                                         text = { Text(opsi, fontSize = dimensionResource(id = R.dimen.font_label).value.sp) },
-                                        onClick = { textPengalaman = opsi; expandedPengalaman = false }
+                                        onClick = {
+                                            textPengalaman = opsi
+                                            expandedPengalaman = false
+                                        }
                                     )
                                 }
                             }
@@ -207,52 +222,73 @@ fun FormBiodata(modifier: Modifier = Modifier) {
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Checkbox(checked = isAndroidChecked, onCheckedChange = { isAndroidChecked = it })
+                            Checkbox(
+                                checked = isAndroidChecked,
+                                onCheckedChange = {
+                                    isAndroidChecked = it
+                                }
+                            )
                             Text(text = stringResource(id = R.string.android), fontSize = dimensionResource(id = R.dimen.font_label).value.sp)
                         }
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Checkbox(checked = isUiUxChecked, onCheckedChange = { isUiUxChecked = it })
+                            Checkbox(
+                                checked = isUiUxChecked,
+                                onCheckedChange = {
+                                    isUiUxChecked = it
+                                }
+                            )
                             Text(text = stringResource(id = R.string.ui_ux), fontSize = dimensionResource(id = R.dimen.font_label).value.sp)
                         }
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Checkbox(checked = isWebChecked, onCheckedChange = { isWebChecked = it })
+                            Checkbox(
+                                checked = isWebChecked,
+                                onCheckedChange = {
+                                    isWebChecked = it
+                                }
+                            )
                             Text(text = stringResource(id = R.string.web), fontSize = dimensionResource(id = R.dimen.font_label).value.sp)
                         }
                     }
 
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_large)))
 
-                    val isFormValid = textNamaDepan.isNotEmpty() && textNamaBelakang.isNotEmpty() &&
-                            textEmail.isNotEmpty() && textTanggalLahir.isNotEmpty() && textPengalaman.isNotEmpty()
-
                     Button(
-                        onClick = { isProceedClicked = true },
-                        enabled = isFormValid,
                         modifier = Modifier
-                            .fillMaxWidth()
+                            .fillMaxWidth(fraction = 1f)
                             .height(dimensionResource(id = R.dimen.height_button)),
+                        enabled = textNamaDepan.isNotEmpty() && textNamaBelakang.isNotEmpty() &&
+                                textEmail.isNotEmpty() && textTanggalLahir.isNotEmpty() && textPengalaman.isNotEmpty(),
                         shape = RoundedCornerShape(dimensionResource(id = R.dimen.radius_button)),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = colorResource(id = R.color.blue),
                             disabledContainerColor = Color(0xFFE0E0E0)
-                        )
+                        ),
+                        onClick = {
+                            namaDepan = textNamaDepan
+                            namaBelakang = textNamaBelakang
+                            email = textEmail
+                            tanggalLahir = textTanggalLahir
+                            pengalaman = textPengalaman
+
+                            val selectedSkills = mutableListOf<String>()
+                            if (isAndroidChecked) selectedSkills.add("Android")
+                            if (isUiUxChecked) selectedSkills.add("UI/UX")
+                            if (isWebChecked) selectedSkills.add("Web")
+                            skills = if (selectedSkills.isNotEmpty()) selectedSkills.joinToString(", ") else "-"
+
+                            isProceedClicked = true
+                        }
                     ) {
                         Text(
                             text = stringResource(id = R.string.proceed),
                             fontSize = dimensionResource(id = R.dimen.font_button).value.sp,
-                            color = if (isFormValid) Color.White else Color.Gray
+                            color = Color.White
                         )
                     }
                 }
 
                 if (isProceedClicked) {
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_large)))
-
-                    val selectedSkills = mutableListOf<String>()
-                    if (isAndroidChecked) selectedSkills.add("Android")
-                    if (isUiUxChecked) selectedSkills.add("UI/UX")
-                    if (isWebChecked) selectedSkills.add("Web")
-                    val skillsText = if (selectedSkills.isNotEmpty()) selectedSkills.joinToString(", ") else "-"
 
                     Box(
                         modifier = Modifier
@@ -263,13 +299,15 @@ fun FormBiodata(modifier: Modifier = Modifier) {
                                 vertical = dimensionResource(id = R.dimen.padding_card_result)
                             )
                     ) {
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .background(Color(0xFF1E1E1E), RoundedCornerShape(dimensionResource(id = R.dimen.radius_card_result)))
-                                .padding(dimensionResource(id = R.dimen.padding_card_result))
+                        ElevatedCard(
+                            elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
+                            colors = CardDefaults.cardColors(containerColor = Color(0xFF1E1E1E)),
+                            modifier = Modifier.fillMaxWidth()
                         ) {
-                            Column(modifier = Modifier.fillMaxWidth()) {
+                            Column(modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(dimensionResource(id = R.dimen.padding_card_result))
+                            ) {
                                 Text(
                                     text = stringResource(id = R.string.result_title),
                                     color = colorResource(id = R.color.light_blue),
@@ -277,19 +315,19 @@ fun FormBiodata(modifier: Modifier = Modifier) {
                                     fontSize = dimensionResource(id = R.dimen.font_result_title).value.sp
                                 )
                                 Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_small)))
-                                Text(text = "• ${stringResource(id = R.string.result_name)} : $textNamaDepan $textNamaBelakang", color = Color.White, fontSize = dimensionResource(id = R.dimen.font_result_body).value.sp)
+
+                                Text(text = "• " + stringResource(id = R.string.result_name) + " : " + namaDepan + " " + namaBelakang, color = Color.White, fontSize = dimensionResource(id = R.dimen.font_result_body).value.sp)
                                 Spacer(modifier = Modifier.height(4.dp))
-                                Text(text = "• ${stringResource(id = R.string.result_date_birth)} : $textTanggalLahir", color = Color.White, fontSize = dimensionResource(id = R.dimen.font_result_body).value.sp)
+                                Text(text = "• " + stringResource(id = R.string.result_date_birth) + " : " + tanggalLahir, color = Color.White, fontSize = dimensionResource(id = R.dimen.font_result_body).value.sp)
                                 Spacer(modifier = Modifier.height(4.dp))
-                                Text(text = "• ${stringResource(id = R.string.result_experience)} : $textPengalaman", color = Color.White, fontSize = dimensionResource(id = R.dimen.font_result_body).value.sp)
+                                Text(text = "• " + stringResource(id = R.string.result_experience) + " : " + pengalaman, color = Color.White, fontSize = dimensionResource(id = R.dimen.font_result_body).value.sp)
                                 Spacer(modifier = Modifier.height(4.dp))
-                                Text(text = "• ${stringResource(id = R.string.result_email)} : $textEmail", color = Color.White, fontSize = dimensionResource(id = R.dimen.font_result_body).value.sp)
+                                Text(text = "• " + stringResource(id = R.string.result_email) + " : " + email, color = Color.White, fontSize = dimensionResource(id = R.dimen.font_result_body).value.sp)
                                 Spacer(modifier = Modifier.height(4.dp))
-                                Text(text = "• ${stringResource(id = R.string.result_skills)} : $skillsText", color = Color.White, fontSize = dimensionResource(id = R.dimen.font_result_body).value.sp)
+                                Text(text = "• " + stringResource(id = R.string.result_skills) + " : " + skills, color = Color.White, fontSize = dimensionResource(id = R.dimen.font_result_body).value.sp)
                             }
                         }
                     }
-
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_large)))
                 }
 
