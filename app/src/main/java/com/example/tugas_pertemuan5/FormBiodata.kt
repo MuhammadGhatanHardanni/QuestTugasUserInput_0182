@@ -97,7 +97,26 @@ fun FormBiodata(modifier: Modifier = Modifier) {
                     .verticalScroll(rememberScrollState()),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = dimensionResource(id = R.dimen.padding_screen_horizontal))
+                        .padding(top = dimensionResource(id = R.dimen.padding_form_vertical)),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = stringResource(id = R.string.title_biodata),
+                        color = Color(0xFF6200EA),
+                        fontSize = dimensionResource(id = R.dimen.font_title).value.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_small)))
+                    Text(
+                        text = stringResource(id = R.string.subtitle_form_biodata),
+                        color = Color.Gray,
+                        fontSize = dimensionResource(id = R.dimen.font_subtitle).value.sp
+                    )
+                }
             }
         }
     }
