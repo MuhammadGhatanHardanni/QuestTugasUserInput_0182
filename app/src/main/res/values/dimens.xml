@@ -6,4 +6,10 @@
     <dimen name="spacing_small">6dp</dimen>
     <dimen name="spacing_medium">12dp</dimen>
     <dimen name="spacing_large">16dp</dimen>
+
+    <dimen name="radius_card_main">32dp</dimen>
+    <dimen name="radius_textfield">16dp</dimen>
+    <dimen name="radius_button">12dp</dimen>
+    <dimen name="radius_card_result">12dp</dimen>
+    <dimen name="radius_menu_button">42dp</dimen>
 </resources>
