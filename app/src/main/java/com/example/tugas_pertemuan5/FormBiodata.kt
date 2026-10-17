@@ -91,7 +91,14 @@ fun FormBiodata(modifier: Modifier = Modifier) {
             ),
             colors = CardDefaults.cardColors(containerColor = Color.White)
         ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState()),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
 
+            }
         }
     }
 }
