@@ -163,6 +163,33 @@ fun FormBiodata(modifier: Modifier = Modifier) {
                                 }
                             }
                         )
+
+                        ExposedDropdownMenuBox(
+                            expanded = expandedPengalaman,
+                            onExpandedChange = { expandedPengalaman = !expandedPengalaman },
+                            modifier = Modifier.weight(1f).padding(start = 6.dp)
+                        ) {
+                            OutlinedTextField(
+                                value = textPengalaman,
+                                onValueChange = { },
+                                readOnly = true,
+                                label = { Text(stringResource(id = R.string.experience), fontSize = dimensionResource(id = R.dimen.font_label).value.sp) },
+                                shape = RoundedCornerShape(dimensionResource(id = R.dimen.radius_textfield)),
+                                trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expandedPengalaman) },
+                                modifier = Modifier.menuAnchor()
+                            )
+                            ExposedDropdownMenu(
+                                expanded = expandedPengalaman,
+                                onDismissRequest = { expandedPengalaman = false }
+                            ) {
+                                opsiPengalaman.forEach { opsi ->
+                                    DropdownMenuItem(
+                                        text = { Text(opsi, fontSize = dimensionResource(id = R.dimen.font_label).value.sp) },
+                                        onClick = { textPengalaman = opsi; expandedPengalaman = false }
+                                    )
+                                }
+                            }
+                        }
                     }
                 }
             }
