@@ -6,4 +6,9 @@
     <string name="last_name">Nama Belakang</string>
     <string name="email">Email</string>
     <string name="date_birth">Tgl Lahir</string>
+    <string name="experience">Experience</string>
+    <string name="choose_skills">Pilih Skill Anda :</string>
+    <string name="android">Android</string>
+    <string name="ui_ux">UI/UX</string>
+    <string name="web">Web</string>
 </resources>
