@@ -12,4 +12,14 @@
     <dimen name="radius_button">12dp</dimen>
     <dimen name="radius_card_result">12dp</dimen>
     <dimen name="radius_menu_button">42dp</dimen>
+
+    <dimen name="height_button">46dp</dimen>
+    <dimen name="height_menu_button">42dp</dimen>
+
+    <dimen name="font_title">24sp</dimen>
+    <dimen name="font_subtitle">12sp</dimen>
+    <dimen name="font_label">13sp</dimen>
+    <dimen name="font_button">15sp</dimen>
+    <dimen name="font_result_title">14sp</dimen>
+    <dimen name="font_result_body">12sp</dimen>
 </resources>
