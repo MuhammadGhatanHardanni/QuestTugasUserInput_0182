@@ -4,12 +4,18 @@
     <string name="subtitle_form_biodata">Silahkan isi biodata Anda dibawah ini !!!</string>
     <string name="first_name">Nama Depan</string>
     <string name="last_name">Nama Belakang</string>
+    <string name="result_name">Nama</string>
     <string name="email">Email</string>
+    <string name="result_email">Email</string>
     <string name="date_birth">Tgl Lahir</string>
+    <string name="result_date_birth">Tanggal Lahir</string>
     <string name="experience">Experience</string>
+    <string name="result_experience">Pengalaman</string>
     <string name="choose_skills">Pilih Skill Anda :</string>
+    <string name="result_skills">Skills</string>
     <string name="android">Android</string>
     <string name="ui_ux">UI/UX</string>
     <string name="web">Web</string>
     <string name="proceed">Proceed</string>
+    <string name="result_title">Data Pendaftaran Berhasil :</string>
 </resources>
