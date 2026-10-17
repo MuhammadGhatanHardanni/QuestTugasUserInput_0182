@@ -219,6 +219,30 @@ fun FormBiodata(modifier: Modifier = Modifier) {
                             Text(text = stringResource(id = R.string.web), fontSize = dimensionResource(id = R.dimen.font_label).value.sp)
                         }
                     }
+
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_large)))
+
+                    val isFormValid = textNamaDepan.isNotEmpty() && textNamaBelakang.isNotEmpty() &&
+                            textEmail.isNotEmpty() && textTanggalLahir.isNotEmpty() && textPengalaman.isNotEmpty()
+
+                    Button(
+                        onClick = { isProceedClicked = true },
+                        enabled = isFormValid,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(dimensionResource(id = R.dimen.height_button)),
+                        shape = RoundedCornerShape(dimensionResource(id = R.dimen.radius_button)),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = colorResource(id = R.color.blue),
+                            disabledContainerColor = Color(0xFFE0E0E0)
+                        )
+                    ) {
+                        Text(
+                            text = stringResource(id = R.string.proceed),
+                            fontSize = dimensionResource(id = R.dimen.font_button).value.sp,
+                            color = if (isFormValid) Color.White else Color.Gray
+                        )
+                    }
                 }
             }
         }
