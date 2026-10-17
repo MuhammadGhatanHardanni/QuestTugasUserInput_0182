@@ -27,10 +27,24 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormBiodata(modifier: Modifier = Modifier) {
 
     var textNamaDepan by remember { mutableStateOf("") }
     var textNamaBelakang by remember { mutableStateOf("") }
     var textEmail by remember { mutableStateOf("") }
+    var textTanggalLahir by remember { mutableStateOf("") }
+    var textPengalaman by remember { mutableStateOf("") }
+
+    var expandedPengalaman by remember { mutableStateOf(false) }
+    val opsiPengalaman = listOf("0-1 tahun", "1-3 tahun", "3-5 tahun")
+
+    var showDatePicker by remember { mutableStateOf(false) }
+    val datePickerState = rememberDatePickerState()
+
+    var isAndroidChecked by remember { mutableStateOf(false) }
+    var isUiUxChecked by remember { mutableStateOf(false) }
+    var isWebChecked by remember { mutableStateOf(false) }
+    var isProceedClicked by remember { mutableStateOf(false) }
 }
