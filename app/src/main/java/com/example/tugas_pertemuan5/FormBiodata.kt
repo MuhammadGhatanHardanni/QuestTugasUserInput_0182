@@ -53,5 +53,14 @@ fun FormBiodata(modifier: Modifier = Modifier) {
             .fillMaxSize()
             .background(Color.White)
     ) {
+        Image(
+            painter = painterResource(id = R.drawable.logo_ucl),
+            contentDescription = "Background",
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight(0.35f)
+                .align(Alignment.TopCenter),
+            contentScale = ContentScale.Crop
+        )
     }
 }
