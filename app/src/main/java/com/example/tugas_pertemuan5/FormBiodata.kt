@@ -191,6 +191,34 @@ fun FormBiodata(modifier: Modifier = Modifier) {
                             }
                         }
                     }
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_medium)))
+
+                    Text(
+                        text = stringResource(id = R.string.choose_skills),
+                        modifier = Modifier.fillMaxWidth(),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = dimensionResource(id = R.dimen.font_label).value.sp,
+                        color = Color.Black
+                    )
+
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Checkbox(checked = isAndroidChecked, onCheckedChange = { isAndroidChecked = it })
+                            Text(text = stringResource(id = R.string.android), fontSize = dimensionResource(id = R.dimen.font_label).value.sp)
+                        }
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Checkbox(checked = isUiUxChecked, onCheckedChange = { isUiUxChecked = it })
+                            Text(text = stringResource(id = R.string.ui_ux), fontSize = dimensionResource(id = R.dimen.font_label).value.sp)
+                        }
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Checkbox(checked = isWebChecked, onCheckedChange = { isWebChecked = it })
+                            Text(text = stringResource(id = R.string.web), fontSize = dimensionResource(id = R.dimen.font_label).value.sp)
+                        }
+                    }
                 }
             }
         }
