@@ -62,5 +62,20 @@ fun FormBiodata(modifier: Modifier = Modifier) {
                 .align(Alignment.TopCenter),
             contentScale = ContentScale.Crop
         )
+
+        IconButton(
+            onClick = { },
+            modifier = Modifier
+                .align(Alignment.TopStart)
+                .padding(start = 20.dp, top = 36.dp)
+                .background(Color.White, shape = CircleShape)
+                .size(dimensionResource(id = R.dimen.height_menu_button))
+        ) {
+            Icon(
+                imageVector = Icons.Default.Menu,
+                contentDescription = "Menu",
+                tint = Color.Gray
+            )
+        }
     }
 }
