@@ -244,6 +244,54 @@ fun FormBiodata(modifier: Modifier = Modifier) {
                         )
                     }
                 }
+
+                if (isProceedClicked) {
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_large)))
+
+                    val selectedSkills = mutableListOf<String>()
+                    if (isAndroidChecked) selectedSkills.add("Android")
+                    if (isUiUxChecked) selectedSkills.add("UI/UX")
+                    if (isWebChecked) selectedSkills.add("Web")
+                    val skillsText = if (selectedSkills.isNotEmpty()) selectedSkills.joinToString(", ") else "-"
+
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(Color(0xFFCFD8DC))
+                            .padding(
+                                horizontal = dimensionResource(id = R.dimen.padding_screen_horizontal),
+                                vertical = dimensionResource(id = R.dimen.padding_card_result)
+                            )
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .background(Color(0xFF1E1E1E), RoundedCornerShape(dimensionResource(id = R.dimen.radius_card_result)))
+                                .padding(dimensionResource(id = R.dimen.padding_card_result))
+                        ) {
+                            Column(modifier = Modifier.fillMaxWidth()) {
+                                Text(
+                                    text = stringResource(id = R.string.result_title),
+                                    color = colorResource(id = R.color.light_blue),
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = dimensionResource(id = R.dimen.font_result_title).value.sp
+                                )
+                                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_small)))
+                                Text(text = "• ${stringResource(id = R.string.result_name)} : $textNamaDepan $textNamaBelakang", color = Color.White, fontSize = dimensionResource(id = R.dimen.font_result_body).value.sp)
+                                Spacer(modifier = Modifier.height(4.dp))
+                                Text(text = "• ${stringResource(id = R.string.result_date_birth)} : $textTanggalLahir", color = Color.White, fontSize = dimensionResource(id = R.dimen.font_result_body).value.sp)
+                                Spacer(modifier = Modifier.height(4.dp))
+                                Text(text = "• ${stringResource(id = R.string.result_experience)} : $textPengalaman", color = Color.White, fontSize = dimensionResource(id = R.dimen.font_result_body).value.sp)
+                                Spacer(modifier = Modifier.height(4.dp))
+                                Text(text = "• ${stringResource(id = R.string.result_email)} : $textEmail", color = Color.White, fontSize = dimensionResource(id = R.dimen.font_result_body).value.sp)
+                                Spacer(modifier = Modifier.height(4.dp))
+                                Text(text = "• ${stringResource(id = R.string.result_skills)} : $skillsText", color = Color.White, fontSize = dimensionResource(id = R.dimen.font_result_body).value.sp)
+                            }
+                        }
+                    }
+
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_large)))
+                }
             }
         }
     }
