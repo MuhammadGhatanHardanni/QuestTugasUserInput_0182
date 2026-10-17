@@ -26,3 +26,11 @@ import androidx.compose.ui.unit.sp
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+
+@Composable
+fun FormBiodata(modifier: Modifier = Modifier) {
+
+    var textNamaDepan by remember { mutableStateOf("") }
+    var textNamaBelakang by remember { mutableStateOf("") }
+    var textEmail by remember { mutableStateOf("") }
+}
