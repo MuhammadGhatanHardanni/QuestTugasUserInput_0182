@@ -149,6 +149,21 @@ fun FormBiodata(modifier: Modifier = Modifier) {
                     )
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_small)))
 
+                    Row(modifier = Modifier.fillMaxWidth()) {
+                        OutlinedTextField(
+                            value = textTanggalLahir,
+                            onValueChange = { },
+                            readOnly = true,
+                            label = { Text(stringResource(id = R.string.date_birth), fontSize = dimensionResource(id = R.dimen.font_label).value.sp) },
+                            shape = RoundedCornerShape(dimensionResource(id = R.dimen.radius_textfield)),
+                            modifier = Modifier.weight(1f).padding(end = 6.dp),
+                            trailingIcon = {
+                                IconButton(onClick = { showDatePicker = true }) {
+                                    Icon(Icons.Default.DateRange, contentDescription = "Pilih Tgl")
+                                }
+                            }
+                        )
+                    }
                 }
             }
         }
