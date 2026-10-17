@@ -116,6 +116,28 @@ fun FormBiodata(modifier: Modifier = Modifier) {
                         color = Color.Gray,
                         fontSize = dimensionResource(id = R.dimen.font_subtitle).value.sp
                     )
+
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_medium)))
+
+                    Row(modifier = Modifier.fillMaxWidth()) {
+                        OutlinedTextField(
+                            value = textNamaDepan,
+                            onValueChange = { textNamaDepan = it },
+                            label = { Text(stringResource(id = R.string.first_name), fontSize = dimensionResource(id = R.dimen.font_label).value.sp) },
+                            shape = RoundedCornerShape(dimensionResource(id = R.dimen.radius_textfield)),
+                            modifier = Modifier.weight(1f).padding(end = 6.dp),
+                            singleLine = true
+                        )
+                        OutlinedTextField(
+                            value = textNamaBelakang,
+                            onValueChange = { textNamaBelakang = it },
+                            label = { Text(stringResource(id = R.string.last_name), fontSize = dimensionResource(id = R.dimen.font_label).value.sp) },
+                            shape = RoundedCornerShape(dimensionResource(id = R.dimen.radius_textfield)),
+                            modifier = Modifier.weight(1f).padding(start = 6.dp),
+                            singleLine = true
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_small)))
                 }
             }
         }
